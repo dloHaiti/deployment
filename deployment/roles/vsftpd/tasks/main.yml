@@ -1,0 +1,13 @@
+---
+- name: Install vsftpd
+  apt: name=vsftpd state=present
+  sudo: yes
+  notify: stop-vsftpd
+- name: copy vsftpd config file
+  copy: src=vsftpd.conf dest=/etc/vsftpd.conf
+  sudo: yes
+  notify: start-vsftpd
+- name: start tomcat
+  service: name=tomcat7 state=started
+- name: Start tomcat
+  service: name=tomcat7 state=started

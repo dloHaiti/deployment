@@ -1,0 +1,31 @@
+---
+- name: Install Java
+  apt: name=openjdk-7-jdk state=present
+  sudo: yes
+  update_cache: yes
+- name: Install tomcat
+  apt: name=tomcat7 state=present
+  sudo: yes
+  notify: stop-tomcat
+- name: Copy the war file
+  copy: src=dloserver.war dest=/var/lib/tomcat7/webapps
+  sudo: yes
+- name: check if file exists
+  stat: path=/etc/appconfig
+  register: p
+- debug: msg="Path exists and is a directory"
+  when: p.stat.isdir is defined and p.stat.isdir == true
+- name: create folder
+#  shell: mkdir /etc/appconfig
+  file: path=/etc/appconfig state=directory
+#  when: p.stat.isdir is defined and p.stat.isdir == true
+  sudo: yes
+- name: copy groovy config
+  copy: src=Config.groovy dest=/etc/appconfig/
+- name: create folders
+#  shell: mkdir /tmp/{{ item }}
+  file: path=/tmp/{{ item }}
+  with_items: 
+    - incoming 
+    - processed 
+    - failed

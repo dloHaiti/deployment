@@ -1,0 +1,1 @@
+192.168.33.10 ansible_ssh_port=22 ansible_ssh_user=maheshbr ansible_ssh_private_key_file=/Users/maheshbr/.ssh/nopassword/nopassword ansible_sudo_pass=vagrant
