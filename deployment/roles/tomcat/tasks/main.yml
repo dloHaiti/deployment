@@ -1,8 +1,7 @@
 ---
 - name: Install Java
-  apt: name=openjdk-7-jdk state=present
+  apt: name=openjdk-7-jdk state=present update_cache=yes
   sudo: yes
-  update_cache: yes
 - name: Install tomcat
   apt: name=tomcat7 state=present
   sudo: yes
@@ -24,7 +23,7 @@
   copy: src=Config.groovy dest=/etc/appconfig/
 - name: create folders
 #  shell: mkdir /tmp/{{ item }}
-  file: path=/tmp/{{ item }}
+  file: path=/tmp/{{ item }} state=directory
   with_items: 
     - incoming 
     - processed 
