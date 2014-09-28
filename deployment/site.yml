@@ -1,5 +1,10 @@
 ---
 - hosts: all
+  pre_tasks:
+    - name: delete folder
+      shell: rm -r /var/lib/tomcat/webapps/dloserver/
+    - name: Delete database
+      mysql_db: name=dlo state=absent
   sudo: yes
   roles:
     - tomcat
