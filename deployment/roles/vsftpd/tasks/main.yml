@@ -11,3 +11,7 @@
   service: name=tomcat7 state=started
 - name: Start tomcat
   service: name=tomcat7 state=started
+- name: wait for tomcat to start
+  wait_for: path=/var/lib/tomcat7/logs/catalina.out search_regex="Server Started"
+- name: Run custom sql file
+  shell: mysql dlo < data.sql
