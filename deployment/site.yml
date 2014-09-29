@@ -5,8 +5,13 @@
       shell: rm -r /var/lib/tomcat/webapps/dloserver/
     - name: Delete database
       mysql_db: name=dlo state=absent
+  
   sudo: yes
   roles:
     - tomcat
     - mysql
     - vsftpd
+
+  post_tasks:
+    - name: Run custom sql file
+      shell: mysql dlo < ./data.sql
