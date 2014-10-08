@@ -6,6 +6,9 @@
   apt: name=tomcat7 state=present
   sudo: yes
   notify: stop-tomcat
+- name: Delete old war file
+  shell: rm -r /var/lib/tomcat7/webapps/dloserver*
+  sudo: yes
 - name: Copy the war file
   copy: src=dloserver.war dest=/var/lib/tomcat7/webapps
   sudo: yes
