@@ -12,7 +12,7 @@ dloserver {
     readings.processed = '/tmp/processed'
     readings.failed    = '/tmp/failed'
 
-    measurement.timeformat = "yyyy-MM-dd hh:mm:ss z"
+    measurement.timeformat = "yyyy-MM-dd hh:mm:ss Z"
     locale.language="ht"
     locale.country="HT"
     measurement.unitOfMeasure="gallon"
