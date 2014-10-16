@@ -32,8 +32,8 @@
 - name: copy web.xml
   copy: src=web.xml dest=/etc/tomcat7/
   sudo: yes
-- name: create csv folder
-  file: path=/root/csvfiles state=directory
+- name: create sql folder
+  file: path=/root/sqlfiles state=directory
 - name: create csv folder in webapps
   files: path=/var/lib/tomcat7/webapps/csvfiles state=directory
 - name: create folders
