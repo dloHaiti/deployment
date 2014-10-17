@@ -35,7 +35,7 @@
 - name: create sql folder
   file: path=/root/sqlfiles state=directory
 - name: create csv folder in webapps
-  files: path=/var/lib/tomcat7/webapps/csvfiles state=directory
+  file: path=/var/lib/tomcat7/webapps/csvfiles state=directory
 - name: create folders
   file: path=/tmp/{{ item }} state=directory
   with_items: 
