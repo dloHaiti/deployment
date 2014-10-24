@@ -3,3 +3,5 @@
   service: name=vsftpd state=stopped
 - name: start-vsftpd
   service: name=vsftpd state=started
+- name: start-tomcat7
+  service: name=tomcat7 state=started
