@@ -3,6 +3,7 @@
   pre_tasks:
     - name: delete folder
       shell: rm -r /var/lib/tomcat7/webapps/dloserver/
+      ignore_errors: true
   
   sudo: yes
   roles:
