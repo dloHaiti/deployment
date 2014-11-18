@@ -30,3 +30,4 @@
 
 - name: Create the database
   mysql_db: name=dlo state=present
+  notify: Restart mysql server
