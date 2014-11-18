@@ -4,6 +4,8 @@
   with_items:
     - python-mysqldb
     - mysql-server
+- name: Copy mysql config file
+  copy: src=my.cnf dest=/etc/mysql/
   notify: Start mysql server
 - name: Mysql | Set root password
   shell: debconf-set-selections << 'mysql-server mysql-server/root_password password root'
@@ -22,6 +24,9 @@
 
 - name: Create the app user for dlo 
   mysql_user: name=app password=password priv=*.*:ALL,GRANT state=present
+
+- name: Create the app user for dlo 
+  mysql_user: name=app password=password priv=*.*:ALL,GRANT state=present host=%
 
 - name: Create the database
   mysql_db: name=dlo state=present
