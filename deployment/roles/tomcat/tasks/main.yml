@@ -42,3 +42,13 @@
     - incoming 
     - processed 
     - failed
+- name: create folders
+  file: path=/root/{{ item }} state=directory
+  with_items:
+    - dbbackup
+    - sqlfiles
+- name: create cron job
+  cron: name="db backup" minute=0 hour=12 user="root" job="sh /root/csv_export.sh"  
+- name: create cron job
+  cron: name="db backup" minute=0 hour=12 user="root" job="sh /root/dbbackup/db_backup.sh"
+
