@@ -16,6 +16,7 @@ dloserver {
     locale.language="ht"
     locale.country="HT"
     measurement.unitOfMeasure="gallon"
+    payment.modes = "cash"
 }
 
 environments {
